@@ -1,0 +1,20 @@
+---
+# This playbook contains plays to install Grafana and its dependencies
+#
+- name: Download Grafana RPM
+  get_url: url={{ wget_grafana_rpm_url }} dest=/var/tmp/ owner=root group=root mode=0644
+
+- name: Install Grafana Dependency Initscripts
+  yum: 
+   name: initscripts
+   state: latest
+
+- name: Install Grafana Dependency Fontconfig
+  yum: 
+   name: fontconfig
+   state: latest
+
+- name: Install Grafana RPM package
+  yum:
+   name: /var/tmp/{{ grafana_rpm }}
+   state: installed

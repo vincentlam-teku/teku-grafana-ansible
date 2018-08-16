@@ -1,0 +1,9 @@
+- name: Configure OS and install Grafana
+  vars: 
+    description: 'Install Grafana'
+  hosts: grafana
+  remote_user: centos
+  become: yes
+
+  roles:
+    - install_grafana
