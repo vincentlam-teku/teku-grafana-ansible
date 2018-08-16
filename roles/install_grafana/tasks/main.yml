@@ -18,3 +18,6 @@
   yum:
    name: /var/tmp/{{ grafana_rpm }}
    state: installed
+
+- name: Start Grafana - Web Port is 3000 
+  command: sudo service grafana-server start
